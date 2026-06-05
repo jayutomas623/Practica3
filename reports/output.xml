@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.10 on win32)" generated="2026-06-04T23:38:01.959147" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Jayu\Universidad\Testing, Quality Assurance\Práctica 3 – Automatización con Robot Framework\robot_project\tests">
+<suite id="s1-s1" name="Busqueda Productos" source="C:\Jayu\Universidad\Testing, Quality Assurance\Práctica 3 – Automatización con Robot Framework\robot_project\tests\busqueda_productos.robot">
+<kw name="Abrir Navegador Al Sitio" owner="common_keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:02.278211" level="INFO">Opening browser 'chrome' to base url 'https://automationexercise.com'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-04T23:38:02.278211" elapsed="8.703244"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-04T23:38:10.981455" elapsed="0.035705"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-06-04T23:38:11.017160" elapsed="0.000999"/>
+</kw>
+<doc>Abre el navegador Chrome y navega a la URL base del sitio</doc>
+<status status="PASS" start="2026-06-04T23:38:02.278211" elapsed="8.739948"/>
+</kw>
+<test id="s1-s1-t1" name="TC03 - Busqueda De Productos Por Termino" line="18">
+<kw name="Navegar A Pagina De Productos" owner="search_keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:11.020185" level="INFO">Opening url 'https://automationexercise.com/products'</msg>
+<arg>${BASE_URL}/products</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-04T23:38:11.019664" elapsed="1.594310"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>All Products</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-04T23:38:12.613974" elapsed="0.010142"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:12.631994" level="INFO">Current page contains text 'All Products'.</msg>
+<arg>${MSG_ALL_PRODUCTS}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-04T23:38:12.624116" elapsed="0.007878"/>
+</kw>
+<doc>Navega a la seccion de productos del sitio</doc>
+<status status="PASS" start="2026-06-04T23:38:11.019664" elapsed="1.612330"/>
+</kw>
+<kw name="Buscar Producto" owner="search_keywords">
+<kw name="Ingresar Termino De Busqueda" owner="search_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=search_product</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-04T23:38:12.633000" elapsed="0.087821"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:12.720821" level="INFO">Typing text 'T-Shirt' into text field 'id=search_product'.</msg>
+<arg>id=search_product</arg>
+<arg>${termino}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:12.720821" elapsed="0.090975"/>
+</kw>
+<arg>${termino}</arg>
+<doc>Escribe el termino en el campo de busqueda</doc>
+<status status="PASS" start="2026-06-04T23:38:12.633000" elapsed="0.178796"/>
+</kw>
+<kw name="Hacer Clic En Boton Buscar" owner="search_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:12.812802" level="INFO">Clicking button 'id=submit_search'.</msg>
+<arg>id=submit_search</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:12.812802" elapsed="1.374713"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${MSG_SEARCHED}</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.187515" elapsed="0.010045"/>
+</kw>
+<doc>Hace clic en el boton de busqueda y espera resultados</doc>
+<status status="PASS" start="2026-06-04T23:38:12.812802" elapsed="1.384758"/>
+</kw>
+<arg>${SEARCH_TERM}</arg>
+<doc>Keyword compuesta: ingresa termino y ejecuta la busqueda</doc>
+<status status="PASS" start="2026-06-04T23:38:12.631994" elapsed="1.565566"/>
+</kw>
+<kw name="Verificar Titulo De Seccion Resultados" owner="search_keywords">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:14.210090" level="INFO">Element 'xpath=//h2[contains(text(),'Searched Products')]' is displayed.</msg>
+<arg>xpath=//h2[contains(text(),'Searched Products')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.198566" elapsed="0.012656"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:14.217216" level="INFO">Current page contains text 'Searched Products'.</msg>
+<arg>${MSG_SEARCHED}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.211222" elapsed="0.005994"/>
+</kw>
+<doc>Valida que el titulo de resultados sea "Searched Products"</doc>
+<status status="PASS" start="2026-06-04T23:38:14.198566" elapsed="0.018650"/>
+</kw>
+<kw name="Verificar Termino En Resultados" owner="search_keywords">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:14.226955" level="INFO">Current page contains text 'T-Shirt'.</msg>
+<arg>${termino}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.217216" elapsed="0.009739"/>
+</kw>
+<arg>${SEARCH_TERM}</arg>
+<doc>Valida que los productos mostrados contienen el termino buscado</doc>
+<status status="PASS" start="2026-06-04T23:38:14.217216" elapsed="0.009739"/>
+</kw>
+<kw name="Verificar Que Existen Productos En Resultados" owner="search_keywords">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:14.235283" level="INFO">Current page contains element 'css=.productinfo'.</msg>
+<arg>css=.productinfo</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.226955" elapsed="0.008328"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:14.241864" level="INFO">Current page contains element 'css=.features_items .col-sm-4'.</msg>
+<arg>css=.features_items .col-sm-4</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.235283" elapsed="0.006581"/>
+</kw>
+<doc>Valida que hay al menos un producto listado en los resultados</doc>
+<status status="PASS" start="2026-06-04T23:38:14.226955" elapsed="0.014909"/>
+</kw>
+<kw name="Tomar Captura De Pantalla" owner="common_keywords">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:14.333047" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/03_busqueda_productos_resultados.png"&gt;&lt;img src="screenshots/03_busqueda_productos_resultados.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/${nombre_archivo}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.241864" elapsed="0.091183"/>
+</kw>
+<arg>03_busqueda_productos_resultados</arg>
+<doc>Guarda una captura de pantalla en la carpeta screenshots</doc>
+<status status="PASS" start="2026-06-04T23:38:14.241864" elapsed="0.091183"/>
+</kw>
+<doc>Verifica que al buscar un termino en la seccion de productos
+los resultados mostrados sean relevantes y correctos.</doc>
+<tag>busqueda</tag>
+<tag>ejercicio3</tag>
+<tag>productos</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-06-04T23:38:11.018159" elapsed="3.314888"/>
+</test>
+<kw name="Cerrar Navegador" owner="common_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-04T23:38:14.334476" elapsed="2.116036"/>
+</kw>
+<doc>Cierra completamente el navegador al finalizar la suite</doc>
+<status status="PASS" start="2026-06-04T23:38:14.334476" elapsed="2.116036"/>
+</kw>
+<doc>Ejercicio 3 - Busqueda de Productos
+
+Objetivo: Ingresar a la seccion de productos, realizar una busqueda
+y validar que los resultados mostrados sean correctos.
+
+Sitio: https://automationexercise.com</doc>
+<status status="PASS" start="2026-06-04T23:38:01.990239" elapsed="14.460273"/>
+</suite>
+<suite id="s1-s2" name="Login Correcto" source="C:\Jayu\Universidad\Testing, Quality Assurance\Práctica 3 – Automatización con Robot Framework\robot_project\tests\login_correcto.robot">
+<kw name="Abrir Navegador Al Sitio" owner="common_keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:16.456531" level="INFO">Opening browser 'chrome' to base url 'https://automationexercise.com'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-04T23:38:16.456531" elapsed="2.968041"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-04T23:38:19.424572" elapsed="0.047012"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-06-04T23:38:19.472592" elapsed="0.001005"/>
+</kw>
+<doc>Abre el navegador Chrome y navega a la URL base del sitio</doc>
+<status status="PASS" start="2026-06-04T23:38:16.456531" elapsed="3.017066"/>
+</kw>
+<test id="s1-s2-t1" name="TC01 - Login Con Credenciales Validas" line="19">
+<kw name="Navegar A Pagina De Login" owner="login_keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:19.474592" level="INFO">Opening url 'https://automationexercise.com/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-04T23:38:19.474592" elapsed="0.723559"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Login to your account</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-04T23:38:20.198151" elapsed="0.011641"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:20.218320" level="INFO">Current page contains text 'New User Signup!'.</msg>
+<arg>New User Signup!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-04T23:38:20.210302" elapsed="0.008018"/>
+</kw>
+<doc>Navega a la URL del login y verifica que la pagina cargo correctamente</doc>
+<status status="PASS" start="2026-06-04T23:38:19.474592" elapsed="0.743728"/>
+</kw>
+<kw name="Ingresar Email De Login" owner="login_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:20.219827" level="INFO">Typing text 'jayu062004@gmail.com' into text field 'css=[data-qa="login-email"]'.</msg>
+<arg>css=[data-qa="login-email"]</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:20.219827" elapsed="0.074758"/>
+</kw>
+<arg>${VALID_EMAIL}</arg>
+<doc>Escribe el email en el campo de inicio de sesion</doc>
+<status status="PASS" start="2026-06-04T23:38:20.219827" elapsed="0.074758"/>
+</kw>
+<kw name="Ingresar Contrasena De Login" owner="login_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:20.296008" level="INFO">Typing text 'jayuRACCO2022' into text field 'css=[data-qa="login-password"]'.</msg>
+<arg>css=[data-qa="login-password"]</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:20.294585" elapsed="0.116632"/>
+</kw>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Escribe la contrasena en el campo de inicio de sesion</doc>
+<status status="PASS" start="2026-06-04T23:38:20.294585" elapsed="0.116632"/>
+</kw>
+<kw name="Hacer Clic En Boton Login" owner="login_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:20.412217" level="INFO">Clicking button 'css=[data-qa="login-button"]'.</msg>
+<arg>css=[data-qa="login-button"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:20.411217" elapsed="1.973098"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-06-04T23:38:23.385441" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-04T23:38:22.384315" elapsed="1.001126"/>
+</kw>
+<doc>Hace clic en el boton de iniciar sesion y espera respuesta</doc>
+<status status="PASS" start="2026-06-04T23:38:20.411217" elapsed="2.974224"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:23.398318" level="INFO">Current page contains text 'Logged in as'.</msg>
+<arg>${MSG_LOGGED_IN}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-04T23:38:23.385441" elapsed="0.012877"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:23.411028" level="INFO">Element 'css=a[href="/logout"]' is displayed.</msg>
+<arg>css=a[href="/logout"]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-04T23:38:23.398318" elapsed="0.012710"/>
+</kw>
+<kw name="Tomar Captura De Pantalla" owner="common_keywords">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:23.521080" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/01_login_correcto_exitoso.png"&gt;&lt;img src="screenshots/01_login_correcto_exitoso.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/${nombre_archivo}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-06-04T23:38:23.412127" elapsed="0.108953"/>
+</kw>
+<arg>01_login_correcto_exitoso</arg>
+<doc>Guarda una captura de pantalla en la carpeta screenshots</doc>
+<status status="PASS" start="2026-06-04T23:38:23.411028" elapsed="0.110052"/>
+</kw>
+<doc>Verifica que un usuario puede iniciar sesion exitosamente
+con email y contraseña correctos registrados en el sistema.</doc>
+<tag>ejercicio1</tag>
+<tag>login</tag>
+<tag>positivo</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-06-04T23:38:19.473597" elapsed="4.048688"/>
+</test>
+<kw name="Cerrar Navegador" owner="common_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-04T23:38:23.523307" elapsed="2.113573"/>
+</kw>
+<doc>Cierra completamente el navegador al finalizar la suite</doc>
+<status status="PASS" start="2026-06-04T23:38:23.523307" elapsed="2.113573"/>
+</kw>
+<doc>Ejercicio 1 - Login Correcto
+
+Objetivo: Automatizar el inicio de sesion con credenciales validas
+y validar el acceso exitoso al sistema.
+
+Sitio: https://automationexercise.com
+Prerequisito: Tener una cuenta registrada en el sitio.</doc>
+<status status="PASS" start="2026-06-04T23:38:16.450512" elapsed="9.186368"/>
+</suite>
+<suite id="s1-s3" name="Login Incorrecto" source="C:\Jayu\Universidad\Testing, Quality Assurance\Práctica 3 – Automatización con Robot Framework\robot_project\tests\login_incorrecto.robot">
+<kw name="Abrir Navegador Al Sitio" owner="common_keywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:25.642393" level="INFO">Opening browser 'chrome' to base url 'https://automationexercise.com'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-04T23:38:25.642393" elapsed="4.226713"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-04T23:38:29.870107" elapsed="0.034769"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-06-04T23:38:29.904876" elapsed="0.000992"/>
+</kw>
+<doc>Abre el navegador Chrome y navega a la URL base del sitio</doc>
+<status status="PASS" start="2026-06-04T23:38:25.642393" elapsed="4.263475"/>
+</kw>
+<test id="s1-s3-t1" name="TC02 - Login Con Credenciales Invalidas" line="18">
+<kw name="Navegar A Pagina De Login" owner="login_keywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:29.906921" level="INFO">Opening url 'https://automationexercise.com/login'</msg>
+<arg>${BASE_URL}/login</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-04T23:38:29.906921" elapsed="0.728742"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Login to your account</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-04T23:38:30.636754" elapsed="0.013858"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:30.661241" level="INFO">Current page contains text 'New User Signup!'.</msg>
+<arg>New User Signup!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-04T23:38:30.650612" elapsed="0.010629"/>
+</kw>
+<doc>Navega a la URL del login y verifica que la pagina cargo correctamente</doc>
+<status status="PASS" start="2026-06-04T23:38:29.905868" elapsed="0.755373"/>
+</kw>
+<kw name="Ingresar Email De Login" owner="login_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:30.662256" level="INFO">Typing text 'correo_invalido@test.com' into text field 'css=[data-qa="login-email"]'.</msg>
+<arg>css=[data-qa="login-email"]</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:30.662256" elapsed="0.086137"/>
+</kw>
+<arg>${INVALID_EMAIL}</arg>
+<doc>Escribe el email en el campo de inicio de sesion</doc>
+<status status="PASS" start="2026-06-04T23:38:30.661241" elapsed="0.087152"/>
+</kw>
+<kw name="Ingresar Contrasena De Login" owner="login_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:30.749901" level="INFO">Typing text 'contraseña_incorrecta999' into text field 'css=[data-qa="login-password"]'.</msg>
+<arg>css=[data-qa="login-password"]</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:30.748393" elapsed="0.069188"/>
+</kw>
+<arg>${INVALID_PASSWORD}</arg>
+<doc>Escribe la contrasena en el campo de inicio de sesion</doc>
+<status status="PASS" start="2026-06-04T23:38:30.748393" elapsed="0.069188"/>
+</kw>
+<kw name="Hacer Clic En Boton Login" owner="login_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:30.818596" level="INFO">Clicking button 'css=[data-qa="login-button"]'.</msg>
+<arg>css=[data-qa="login-button"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-04T23:38:30.818596" elapsed="0.799545"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-06-04T23:38:32.618299" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-06-04T23:38:31.618141" elapsed="1.000158"/>
+</kw>
+<doc>Hace clic en el boton de iniciar sesion y espera respuesta</doc>
+<status status="PASS" start="2026-06-04T23:38:30.818596" elapsed="1.799703"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:32.631633" level="INFO">Current page contains text 'Your email or password is incorrect!'.</msg>
+<arg>${MSG_LOGIN_ERROR}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-06-04T23:38:32.618299" elapsed="0.013334"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:32.644148" level="INFO">Element 'xpath=//p[contains(text(),'Your email or password is incorrect!')]' is displayed.</msg>
+<arg>xpath=//p[contains(text(),'Your email or password is incorrect!')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-04T23:38:32.631633" elapsed="0.012515"/>
+</kw>
+<kw name="Tomar Captura De Pantalla" owner="common_keywords">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-06-04T23:38:32.693784" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/02_login_incorrecto_error.png"&gt;&lt;img src="screenshots/02_login_incorrecto_error.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>screenshots/${nombre_archivo}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-06-04T23:38:32.645174" elapsed="0.048610"/>
+</kw>
+<arg>02_login_incorrecto_error</arg>
+<doc>Guarda una captura de pantalla en la carpeta screenshots</doc>
+<status status="PASS" start="2026-06-04T23:38:32.645174" elapsed="0.048610"/>
+</kw>
+<doc>Verifica que al ingresar un email o contrasena incorrectos
+el sistema muestra un mensaje de error apropiado.</doc>
+<tag>ejercicio2</tag>
+<tag>login</tag>
+<tag>negativo</tag>
+<status status="PASS" start="2026-06-04T23:38:29.905868" elapsed="2.787916"/>
+</test>
+<kw name="Cerrar Navegador" owner="common_keywords" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-06-04T23:38:32.694784" elapsed="2.096057"/>
+</kw>
+<doc>Cierra completamente el navegador al finalizar la suite</doc>
+<status status="PASS" start="2026-06-04T23:38:32.694784" elapsed="2.096057"/>
+</kw>
+<doc>Ejercicio 2 - Login Incorrecto
+
+Objetivo: Automatizar un inicio de sesion con credenciales invalidas
+y validar el mensaje de error mostrado por la aplicacion.
+
+Sitio: https://automationexercise.com</doc>
+<status status="PASS" start="2026-06-04T23:38:25.637972" elapsed="9.152869"/>
+</suite>
+<status status="PASS" start="2026-06-04T23:38:01.960128" elapsed="32.831711"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">busqueda</stat>
+<stat pass="1" fail="0" skip="0">ejercicio1</stat>
+<stat pass="1" fail="0" skip="0">ejercicio2</stat>
+<stat pass="1" fail="0" skip="0">ejercicio3</stat>
+<stat pass="2" fail="0" skip="0">login</stat>
+<stat pass="1" fail="0" skip="0">negativo</stat>
+<stat pass="1" fail="0" skip="0">positivo</stat>
+<stat pass="1" fail="0" skip="0">productos</stat>
+<stat pass="2" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="3" fail="0" skip="0">Tests</stat>
+<stat name="Busqueda Productos" id="s1-s1" pass="1" fail="0" skip="0">Tests.Busqueda Productos</stat>
+<stat name="Login Correcto" id="s1-s2" pass="1" fail="0" skip="0">Tests.Login Correcto</stat>
+<stat name="Login Incorrecto" id="s1-s3" pass="1" fail="0" skip="0">Tests.Login Incorrecto</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
